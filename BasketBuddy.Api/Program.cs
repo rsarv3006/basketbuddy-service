@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DataContext>(options =>
+builder.Services.AddDbContext<BasketBuddyContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDb")));
 
 var app = builder.Build();

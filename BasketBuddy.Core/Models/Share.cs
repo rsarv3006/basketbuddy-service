@@ -3,23 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.Http.Json;
 using Microsoft.EntityFrameworkCore;
 
-namespace BasketBuddy.Data;
-
-public class DataContext : DbContext
-{
-    public DbSet<Share> Shares { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseNpgsql(
-            "Host=localhost;Database=postgres;Username=admin;Password=admin");
-    }
-    
-    public DataContext(DbContextOptions<DataContext> options) 
-        : base(options)
-    {
-    }
-}
+namespace BasketBuddy.Core;
 
 [Table("Shares")]
 [Index(nameof(ShareCode), IsUnique = true)]
@@ -32,6 +16,7 @@ public class Share
     }
     
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
 
     [Required]
