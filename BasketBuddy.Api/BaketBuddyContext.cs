@@ -1,7 +1,7 @@
-using BasketBuddy.Core;
+using BasketBuddy.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BasketBuddy.Data;
+namespace BasketBuddy.Api;
 
 public class BasketBuddyContext : DbContext
 {

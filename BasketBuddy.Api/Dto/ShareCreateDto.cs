@@ -1,17 +1,18 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Antiforgery;
 
 namespace BasketBuddy.Api.Dto;
 
 public struct ShareCreateDto
 {
-    private JsonContent Data { get; }
+    private JsonDocument Data { get; }
     
-    public ShareCreateDto(JsonContent data)
+    public ShareCreateDto(JsonDocument data)
     {
         Data = data;
     }
     
-    public JsonContent GetData()
+    public JsonDocument GetData()
     {
         return Data;
     }

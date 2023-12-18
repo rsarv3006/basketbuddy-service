@@ -1,22 +1,21 @@
 using BasketBuddy.Api.Dto;
-using BasketBuddy.Core;
-using BasketBuddy.Data;
+using BasketBuddy.Core.Models;
 
 namespace BasketBuddy.Api.Services;
 
 public class ShareService
 {
-   private readonly ShareRepository shareRepo;
+   private readonly ShareRepository _shareRepository;
       
    public ShareService(ShareRepository shareRepository)
    {
-      shareRepo = shareRepository;
+      _shareRepository = shareRepository;
    }
    
-   public async Task<Share> createShare(ShareCreateDto dto)
+   public async Task<Share> CreateShare(ShareCreateDto dto)
    {
       ArgumentNullException.ThrowIfNull(dto.GetData());
       
-      return await shareRepo.CreateShare(dto.GetData()); 
+      return await _shareRepository.CreateShare(dto.GetData()); 
    }
 }

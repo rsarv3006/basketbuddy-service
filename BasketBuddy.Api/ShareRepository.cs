@@ -1,8 +1,9 @@
-using System.Net.Http.Json;
-using BasketBuddy.Core;
+using System.Text.Json;
+using BasketBuddy.Api;
+using BasketBuddy.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BasketBuddy.Data;
+namespace BasketBuddy.Api;
 
 public class ShareRepository
 {
@@ -13,7 +14,7 @@ public class ShareRepository
         _context = context;
     }
     
-    public async Task<Share> CreateShare(JsonContent data)
+    public async Task<Share> CreateShare(JsonDocument data)
     {
         var share = new Share(data);
         await _context.Shares.AddAsync(share);
