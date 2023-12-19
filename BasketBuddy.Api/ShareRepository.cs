@@ -30,4 +30,12 @@ public class ShareRepository
         return share;
     }
     
+    public async Task DeleteShare(string shareCode)
+    {
+        var share = await _context.Shares.FirstOrDefaultAsync(s => s.ShareCode == shareCode);
+        if (share == null) throw new Exception("Share not found");
+        
+        _context.Shares.Remove(share);
+        await _context.SaveChangesAsync();
+    }
 }

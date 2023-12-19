@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BasketBuddy.Api.Controllers;
 
 [Route("api/v1/[controller]")]
+[ApiController]
 public class ShareController: ControllerBase
 {
     private readonly ShareService _shareService;
@@ -17,15 +18,36 @@ public class ShareController: ControllerBase
         _shareService = shareService ?? throw new ArgumentNullException(nameof(shareService));
     }
 
-    // GET api/v1/[controller]/items[?pageSize=3&pageIndex=10]
     [HttpPost]
     [Route("create")]
     [ProducesResponseType(typeof(IEnumerable<Share>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<IActionResult> CreateShareAsync([FromBody] JsonDocument data)
+    public async Task<IActionResult> CreateShareAsync(ShareCreateDto dto)
     {
-        var model = await _shareService.CreateShare(new ShareCreateDto(data));
+        var model = await _shareService.CreateShare(dto);
 
         return Ok(model);
+    }
+
+    [HttpGet]
+    [Route("{shareCode}")]
+    [ProducesResponseType(typeof(Share), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> GetShareAsync(string shareCode)
+    {
+        try
+        {
+            var share = await _shareService.GetShare(shareCode);
+
+            return Ok(share);
+        }
+        catch (Exception ex) when (ex.Message.Contains("Share not found"))
+        {
+            return BadRequest("Share not found");
+        }
+        catch (Exception ex) when (ex.Message.Contains("Share has expired"))
+        {
+            return BadRequest("Share has expired");
+        }
     }
 }
