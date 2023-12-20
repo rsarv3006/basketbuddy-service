@@ -32,4 +32,9 @@ public class ShareService
       await _shareRepository.DeleteShare(shareCode);
       return share;
    }
+   
+   public async Task DeleteAllExpiredShares()
+   {
+      await _shareRepository.DeleteAllExpiredShares();
+   }
 }

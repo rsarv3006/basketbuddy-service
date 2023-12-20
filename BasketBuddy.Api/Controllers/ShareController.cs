@@ -50,4 +50,13 @@ public class ShareController: ControllerBase
             return BadRequest("Share has expired");
         }
     }
+    
+    [HttpDelete]
+    [Route("delete-expired")]
+    [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public async Task DeleteAllExpiredShares()
+    {
+        await _shareService.DeleteAllExpiredShares();
+    }
 }
