@@ -1,12 +1,13 @@
 using System.Net;
-using System.Text.Json;
 using BasketBuddy.Api.Dto;
 using BasketBuddy.Api.Services;
 using BasketBuddy.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BasketBuddy.Api.Controllers;
 
+[Authorize]
 [Route("api/v1/[controller]")]
 [ApiController]
 public class ShareController: ControllerBase
@@ -20,13 +21,12 @@ public class ShareController: ControllerBase
 
     [HttpPost]
     [Route("create")]
-    [ProducesResponseType(typeof(IEnumerable<Share>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> CreateShareAsync(ShareCreateDto dto)
     {
         var model = await _shareService.CreateShare(dto);
 
-        return Ok(model);
+        return new CreatedResult($"/api/v1/Share/{model.ShareCode}", model);
     }
 
     [HttpGet]

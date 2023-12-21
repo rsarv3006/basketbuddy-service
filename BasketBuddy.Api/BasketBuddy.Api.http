@@ -4,3 +4,26 @@ GET {{BasketBuddy.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+POST {{BasketBuddy.Api_HostAddress}}/api/v1/Share/create
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbm9uIjoiNDhmYmVlNWQtZTEyYy00ZWJlLWFlNTAtOWUxYzE5ZWIyYThiIiwiaXNzIjoiPGlzc3Vlcj4iLCJhdWQiOiI8YXVkaWVuY2U-In0.BWbZUppqgicxZvUGqkK6WSlGxl3fIQEukSwYRBPOPaU
+
+{
+  "data": {
+    "shareId": "fe61e443-6cb3-430c-a509-78ea4fdae36e"
+  }
+}
+
+###
+GET {{BasketBuddy.Api_HostAddress}}/api/v1/Share/3265RL
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbm9uIjoiYWI4NjcwNzEtNDFjOS00NGZjLWE1NzMtYjRkY2U5MzMwNDdhIiwiZXhwIjoxNzAzMTI3ODk5LCJpc3MiOiI8aXNzdWVyPiIsImF1ZCI6IjxhdWRpZW5jZT4ifQ.PsBMArk_I1YserrqxWhU0s-j74ecSMIOeoj50BjUI90
+
+
+###
+DELETE {{BasketBuddy.Api_HostAddress}}/api/v1/Share/delete-expired
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbm9uIjoiYWI4NjcwNzEtNDFjOS00NGZjLWE1NzMtYjRkY2U5MzMwNDdhIiwiZXhwIjoxNzAzMTI3ODk5LCJpc3MiOiI8aXNzdWVyPiIsImF1ZCI6IjxhdWRpZW5jZT4ifQ.PsBMArk_I1YserrqxWhU0s-j74ecSMIOeoj50BjUI90
