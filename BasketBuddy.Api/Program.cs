@@ -1,15 +1,15 @@
 using System.Text;
 using BasketBuddy.Api;
 using BasketBuddy.Api.Services;
+using DotNetEnv;
+using DotNetEnv.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-var symmetricKey = Encoding.ASCII.GetBytes("supersecretkeysupersecretkeysupersecretkey");
-
-Console.WriteLine(TokenHelpers.GenerateToken());
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddDotNetEnv(".env", LoadOptions.TraversePath());
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,11 +25,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,    
-            IssuerSigningKey = new SymmetricSecurityKey(symmetricKey),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Env.GetString("JWT_SECRET"))),
             ValidateIssuer = false,
             ValidateAudience = false 
         };
     });
+
+Console.WriteLine(TokenHelpers.GenerateToken(Encoding.ASCII.GetBytes(Env.GetString("JWT_SECRET"))));
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<ShareRepository>();

@@ -7,7 +7,7 @@ Accept: application/json
 POST {{BasketBuddy.Api_HostAddress}}/api/v1/Share/create
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbm9uIjoiNDhmYmVlNWQtZTEyYy00ZWJlLWFlNTAtOWUxYzE5ZWIyYThiIiwiaXNzIjoiPGlzc3Vlcj4iLCJhdWQiOiI8YXVkaWVuY2U-In0.BWbZUppqgicxZvUGqkK6WSlGxl3fIQEukSwYRBPOPaU
+Authorization: Bearer {{accessToken}}
 
 {
   "data": {
