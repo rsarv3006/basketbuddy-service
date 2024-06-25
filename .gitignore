@@ -6,3 +6,5 @@ riderModule.iml
 .idea/
 **/.DS_Store
 .env
+**/.env
+BasketBuddy.Api/.env

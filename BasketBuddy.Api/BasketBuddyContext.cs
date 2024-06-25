@@ -10,7 +10,7 @@ public class BasketBuddyContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql(
-            "Host=localhost;Database=postgres;Username=admin;Password=admin");
+            "Host=localhost;Database=basketbuddy;Username=admin;Password=admin");
     }
     
     public BasketBuddyContext(DbContextOptions<BasketBuddyContext> options) 
