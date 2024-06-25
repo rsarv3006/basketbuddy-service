@@ -1,4 +1,5 @@
 using BasketBuddy.Api.Dto;
+using BasketBuddy.Api.Repositories;
 using BasketBuddy.Core.Models;
 
 namespace BasketBuddy.Api.Services;

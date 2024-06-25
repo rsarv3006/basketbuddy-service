@@ -4,6 +4,8 @@ using ApiAlerts.Common.Services;
 using ApiUtilities.Common.Handlers;
 using ApiUtilities.Common.Interfaces;
 using BasketBuddy.Api;
+using BasketBuddy.Api.Helpers;
+using BasketBuddy.Api.Repositories;
 using BasketBuddy.Api.Services;
 using DotNetEnv;
 using DotNetEnv.Configuration;

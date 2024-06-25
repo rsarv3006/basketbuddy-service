@@ -4,6 +4,7 @@ using ApiAlerts.Common.Services;
 using BasketBuddy.Api.Dto;
 using BasketBuddy.Api.Services;
 using BasketBuddy.Core.Models;
+using DotNetEnv;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,7 @@ public class ShareController : ControllerBase
   public ShareController(ShareService shareService, AlertService alertService)
   {
     _shareService = shareService ?? throw new ArgumentNullException(nameof(shareService));
-    alertService.Activate("");
+    alertService.Activate(Env.GetString("API_ALERTS_KEY"));
     _alertService = alertService ?? throw new ArgumentNullException(nameof(alertService));
   }
 

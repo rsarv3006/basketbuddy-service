@@ -2,7 +2,7 @@ using System.Text.Json;
 using BasketBuddy.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BasketBuddy.Api;
+namespace BasketBuddy.Api.Repositories;
 
 public class ShareRepository
 {
