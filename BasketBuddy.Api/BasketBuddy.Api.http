@@ -1,8 +1,5 @@
 @BasketBuddy.Api_HostAddress = http://localhost:5031
 
-GET {{BasketBuddy.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
 ###
 POST {{BasketBuddy.Api_HostAddress}}/api/v1/Share/create
 Content-Type: application/json
@@ -26,4 +23,4 @@ Authorization: Bearer {{accessToken}}
 DELETE {{BasketBuddy.Api_HostAddress}}/api/v1/Share/delete-expired
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbm9uIjoiYWI4NjcwNzEtNDFjOS00NGZjLWE1NzMtYjRkY2U5MzMwNDdhIiwiZXhwIjoxNzAzMTI3ODk5LCJpc3MiOiI8aXNzdWVyPiIsImF1ZCI6IjxhdWRpZW5jZT4ifQ.PsBMArk_I1YserrqxWhU0s-j74ecSMIOeoj50BjUI90
+Authorization: Bearer {{accessToken}}
